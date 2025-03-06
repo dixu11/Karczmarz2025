@@ -4,8 +4,16 @@ import java.util.List;
 
 public class Game {
 
-    public List<Dialog> getDialogs() {
-        DialogRepository dialogRepository = new DialogRepository();
-        return dialogRepository.loadAllDialogs();
+    private final DialogRepository dialogRepository = new DialogRepository();
+
+    public List<String> getDialogs() {
+        return dialogRepository.loadAllDialogs().stream()
+                .map(Dialog::getText)
+                .toList();
+    }
+
+    public String selectOption(int answerIndex) {
+        List<Dialog> dialogs = dialogRepository.loadAllDialogs();
+        return dialogs.get(answerIndex).getResponse();
     }
 }
