@@ -1,7 +1,10 @@
 package game;
 
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+
+import static common.JavaUtils.readAnswer;
 
 public class ConsoleController {
 
@@ -9,22 +12,16 @@ public class ConsoleController {
 
     public void start() {
         System.out.println("Witaj w mojej karczmie! Na co masz ochotę?");
-        showOptions();
-        int answerNr = readAnswer();
+        List<String> dialogs = game.getDialogs();
+        showOptions(dialogs);
+        int answerNr = readAnswer(1,dialogs.size());
         String answer = game.selectOption(answerNr - 1);
         System.out.println(answer);
     }
 
-    private void showOptions() {
-        List<String> dialogs = game.getDialogs();
+    private void showOptions(List<String> dialogs) {
         for (int i = 0; i < dialogs.size(); i++) {
             System.out.printf("%d. %s\n",i+1,dialogs.get(i));
         }
-    }
-
-    private int readAnswer() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Wpisz numer wybranej opcji:");
-        return scanner.nextInt();
     }
 }
