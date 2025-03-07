@@ -1,5 +1,6 @@
 package game;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
@@ -22,13 +23,15 @@ public class Game {
                  .toList();
     }
 
-    public String selectOption(int answerIndex) {
+    public DialogResult selectOption(int answerIndex) {
         List<Dialog> dialogs = actualNode.getDialogs();
         Dialog dialog = dialogs.get(answerIndex);
         String response = dialog.getResponse();
         if (dialog.getChangeNode() != null) {
             actualNode = dialog.getChangeNode();
         }
-        return response;
+        List<String> systemMessages = new ArrayList<>();
+        return new DialogResult("Gracz",dialog.getText(),NPC_ID,response,
+                systemMessages);
     }
 }

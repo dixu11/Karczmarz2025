@@ -5,11 +5,15 @@ public class Dialog {
     private String text;
     private String response;
     private Node changeNode;
+    private Item buyItem;
 
-    public Dialog(int id, String text, String response) {
+    public Dialog(int id, String text, String response,ItemType buyItemType) {
         this.id = id;
         this.text = text;
         this.response = response;
+        if (buyItemType != null) {
+            buyItem = new ItemFactory().getItemByType(buyItemType);
+        }
     }
 
     public void setChangeNode(Node changeNode) {

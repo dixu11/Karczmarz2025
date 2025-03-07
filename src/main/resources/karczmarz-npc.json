@@ -27,12 +27,14 @@
     {
       "id": 5,
       "text": "Poproszę piwo",
-      "response": "Kręci Ci się w glowie ale trunek smakuje całkiem niezle. To był dobry wybór!"
+      "buyItem": "BEER",
+      "response": ""
     },
     {
       "id": 6,
       "text": "Poproszę obiad",
-      "response": "Dzisiaj schabowe. Smakują wybornie!"
+      "buyItem": "FOOD",
+      "response": "Smacznego!"
     },
     {
       "id": 7,
@@ -48,7 +50,8 @@
     {
       "id": 9,
       "text": "Tak, oto one",
-      "response": "Masz sen - Jesteś na statku, widzisz przed sobą wielką osmiornicę. Uciekasz pod pokład?",
+      "buyItem": "ROOM",
+      "response": "",
       "changeNode": 4
     },
     {
