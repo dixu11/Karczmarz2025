@@ -4,7 +4,11 @@ import static common.JavaUtils.readAnswer;
 
 public class ConsoleController {
 
-   private final Game game = new Game();
+   private final Game game;
+
+    public ConsoleController(Game game) {
+        this.game = game;
+    }
 
     public void start() {
         System.out.println("Witaj w mojej karczmie! Na co masz ochotę?");

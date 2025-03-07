@@ -1,0 +1,58 @@
+{
+  "id": "karczmarz",
+  "dialogs": [
+    {
+      "id": 1,
+      "text": "Witaj! Jak się masz?",
+      "response": "A doskonale, interes sie kreci! Czego potrzebujesz?"
+    },
+    {
+      "id": 2,
+      "text": "Pokaż mi swoje towary",
+      "response": "Jest w zasadzie tylko piwo za 3 monety i danie dnia za 4... Na co masz ochotę?"
+    },
+    {
+      "id": 3,
+      "text": "Kimnął bym się",
+      "response": "Nocleg kosztuje 5 złotych monet. Zainteresowany?"
+    },
+    {
+      "id": 4,
+      "text": "Już od godziny czekam na kelnera!",
+      "response": "Panieeee... to nie je żodna restaurancja żeby kelnyrów zatrudniać. Masz jakiś problem?"
+    },
+    {
+      "id": 5,
+      "text": "Poproszę piwo",
+      "response": "Kręci Ci się w glowie ale trunek smakuje całkiem niezle. To był dobry wybór!"
+    },
+    {
+      "id": 6,
+      "text": "Poproszę obiad",
+      "response": "Dzisiaj schabowe. Smakują wybornie!"
+    },
+    {
+      "id": 7,
+      "text": "W sumie to mam inna sprawę...",
+      "response": "(powrót)"
+    },
+    {
+      "id": 8,
+      "text": "",
+      "response": ""
+    }
+  ],
+
+  "nodes": [
+    {
+      "id": 1,
+      "name": "start rozmowy",
+      "dialogs": [1,2,3,4]
+    },
+    {
+      "id": 2,
+      "name": "zakupy",
+      "dialogs": [5,6,7]
+    }
+  ]
+}
