@@ -15,12 +15,14 @@
     {
       "id": 3,
       "text": "Kimnął bym się",
-      "response": "Nocleg kosztuje 5 złotych monet. Zainteresowany?"
+      "response": "Nocleg kosztuje 5 złotych monet. Zainteresowany?",
+      "changeNode": 3
     },
     {
       "id": 4,
       "text": "Już od godziny czekam na kelnera!",
-      "response": "Panieeee... to nie je żodna restaurancja żeby kelnyrów zatrudniać. Masz jakiś problem?"
+      "response": "Panieeee... to nie je żodna restaurancja żeby kelnyrów zatrudniać. Masz jakiś problem?",
+      "changeNode": 6
     },
     {
       "id": 5,
@@ -35,10 +37,71 @@
     {
       "id": 7,
       "text": "W sumie to mam inna sprawę...",
-      "response": "(powrót)"
+      "response": "Czego potrzebujesz?",
+      "changeNode": 1
     },
     {
       "id": 8,
+      "text": "Bywaj!",
+      "response": ""
+    },
+    {
+      "id": 9,
+      "text": "Tak, oto one",
+      "response": "Masz sen - Jesteś na statku, widzisz przed sobą wielką osmiornicę. Uciekasz pod pokład?",
+      "changeNode": 4
+    },
+    {
+      "id": 10,
+      "text": "Tak",
+      "response": "Budzisz się, czy chcesz wyjść z pokoju?",
+      "changeNode": 5
+    },
+    {
+      "id": 11,
+      "text": "Nie",
+      "response": "Ośmiornica Cię zjada."
+    },
+    {
+      "id": 12,
+      "text": "Tak",
+      "response": "Spadł na Ciebie żyrandol z sufitu."
+    },
+    {
+      "id": 13,
+      "text": "Nie",
+      "response": "Minęło parę minut więc zapytam jeszcze raz... Wychodzisz z pokoju?"
+    },
+    {
+      "id": 14,
+      "text": "A mam, dawaj na solo!",
+      "response": "Bez nerwów towarzyszu. Tylko żartowałem... Napijesz się pan coś na koszt firmy?",
+      "changeNode" : 7
+    },
+    {
+      "id": 15,
+      "text": "Nie, przepraszam, wasza karczma, wasze zasady.",
+      "response": "Dobrze powiedziane. Zamawiasz coś pan czy nie?",
+      "changeNode": 2
+    },
+    {
+      "id": 16,
+      "text": "Poproszę darmowe piwo",
+      "response": "Dostałeś darmowe piwo",
+      "changeNode": 2
+    },
+    {
+      "id":17 ,
+      "text": "",
+      "response": ""
+    },
+    {
+      "id":18 ,
+      "text": "",
+      "response": ""
+    },
+    {
+      "id":19 ,
       "text": "",
       "response": ""
     }
@@ -48,12 +111,37 @@
     {
       "id": 1,
       "name": "start rozmowy",
-      "dialogs": [1,2,3,4]
+      "dialogs": [1,2,3,4,8]
     },
     {
       "id": 2,
       "name": "zakupy",
-      "dialogs": [5,6,7]
+      "dialogs": [5,6,7,8]
+    },
+    {
+      "id":3,
+      "name": "spanie",
+      "dialogs": [9,7,8]
+    },
+    {
+      "id":4,
+      "name": "sen",
+      "dialogs": [10,11]
+    },
+    {
+      "id":5,
+      "name": "pokój",
+      "dialogs": [12,13]
+    },
+    {
+      "id":6,
+      "name": "kelner",
+      "dialogs": [14,15]
+    },
+    {
+      "id":7,
+      "name": "darmowe",
+      "dialogs": [16,7]
     }
   ]
 }
