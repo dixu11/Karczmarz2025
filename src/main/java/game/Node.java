@@ -18,4 +18,10 @@ public class Node {
     public int getId() {
         return id;
     }
+
+    public boolean hasPaidOption() {
+        return dialogs.stream()
+                .anyMatch(Dialog::hasBuyItem);
+
+    }
 }

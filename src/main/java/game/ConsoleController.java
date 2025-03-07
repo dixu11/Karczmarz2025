@@ -1,5 +1,7 @@
 package game;
 import java.util.List;
+
+import static common.JavaUtils.clear;
 import static common.JavaUtils.readAnswer;
 
 public class ConsoleController {
@@ -18,14 +20,19 @@ public class ConsoleController {
     }
 
     private void executeDialog() {
-        List<String> dialogs = game.getDialogs();
-        showOptions(dialogs);
-        int answerNr = readAnswer(1,dialogs.size());
+        DialogOptions dialogOptions = game.getDialogs();
+        showOptions(dialogOptions);
+        int answerNr = readAnswer(1,dialogOptions.getDialogs().size());
+        clear();
         DialogResult dialogResult = game.selectOption(answerNr - 1);
         printResult(dialogResult);
     }
 
-    private void showOptions(List<String> dialogs) {
+    private void showOptions(DialogOptions dialogOptions) {
+        printSystemMessages(dialogOptions.getSystemMessages());
+        List<String> dialogs = dialogOptions.getDialogs();
+        printSystemMessage("Wybierz jedną z opcji:");
+        System.out.println();
         for (int i = 0; i < dialogs.size(); i++) {
             System.out.printf("%d. %s\n",i+1,dialogs.get(i));
         }
@@ -33,9 +40,23 @@ public class ConsoleController {
 
     private void printResult(DialogResult dialogResult) {
         System.out.printf("%s: %s\n",dialogResult.getPlayerName(),dialogResult.getPlayerDialog());
-        for (String systemMessage : dialogResult.getSystemMessages()) {
-            System.out.printf("\t*: %s\n",systemMessage);
+        printSystemMessages(dialogResult.getSystemMessages());
+        if (dialogResult.getNpcResponse().isEmpty()) {
+            return;
         }
+        System.out.println();
         System.out.printf("%s: %s\n",dialogResult.getNpcName(),dialogResult.getNpcResponse());
+        System.out.println();
+    }
+
+    private void printSystemMessage(String message) {
+        System.out.printf("\t#%s\n",message);
+    }
+
+    private void printSystemMessages(List<String> systemMessages) {
+        for (String systemMessage : systemMessages) {
+            printSystemMessage(systemMessage);
+            System.out.println();
+        }
     }
 }

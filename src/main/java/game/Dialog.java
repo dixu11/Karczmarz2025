@@ -35,4 +35,16 @@ public class Dialog {
     public Node getChangeNode() {
         return changeNode;
     }
+
+    public boolean hasChangeNode() {
+        return changeNode != null;
+    }
+
+    public boolean hasBuyItem() {
+        return buyItem != null;
+    }
+
+    public Item getBuyItem() {
+        return buyItem;
+    }
 }

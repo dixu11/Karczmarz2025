@@ -24,7 +24,7 @@ public class NpcJsonRepository implements NpcRepository {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             npcDto = objectMapper.readValue(new File(getClass().getResource(
-                            String.format(FILE_PATH, id)
+                            String.format(FILE_PATH, id.toLowerCase())
                     )
                     .getFile()), NpcDto.class);
             extractBusinessEntities();

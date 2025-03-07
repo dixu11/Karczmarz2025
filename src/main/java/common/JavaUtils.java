@@ -19,4 +19,9 @@ public class JavaUtils {
             return readAnswer(min, max);
         }
     }
+
+    public static void clear() {
+        for (int i = 0; i < 50; ++i)
+            System.out.println();
+    }
 }
