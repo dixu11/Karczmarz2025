@@ -1,9 +1,5 @@
 package game;
-
-import java.util.InputMismatchException;
 import java.util.List;
-import java.util.Scanner;
-
 import static common.JavaUtils.readAnswer;
 
 public class ConsoleController {

@@ -9,6 +9,9 @@ public class Dialog {
         this.response = response;
     }
 
+    public Dialog() {
+    }
+
     public String getText() {
         return text;
     }
