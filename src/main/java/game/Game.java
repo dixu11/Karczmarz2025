@@ -24,6 +24,11 @@ public class Game {
 
     public String selectOption(int answerIndex) {
         List<Dialog> dialogs = actualNode.getDialogs();
-        return dialogs.get(answerIndex).getResponse();
+        Dialog dialog = dialogs.get(answerIndex);
+        String response = dialog.getResponse();
+        if (dialog.getChangeNode() != null) {
+            actualNode = dialog.getChangeNode();
+        }
+        return response;
     }
 }

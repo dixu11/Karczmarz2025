@@ -9,7 +9,8 @@
     {
       "id": 2,
       "text": "Pokaż mi swoje towary",
-      "response": "Jest w zasadzie tylko piwo za 3 monety i danie dnia za 4... Na co masz ochotę?"
+      "response": "Jest w zasadzie tylko piwo za 3 monety i danie dnia za 4... Na co masz ochotę?",
+      "changeNode": 2
     },
     {
       "id": 3,

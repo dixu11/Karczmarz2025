@@ -13,40 +13,69 @@ import java.util.List;
 public class NpcJsonRepository implements NpcRepository {
 
     private static final String FILE_PATH = "/%s-npc.json";
+    private NpcDto npcDto;
+    private List<Dialog> allDialogs;
+    private List<Node> nodes;
+    private Npc npc;
 
 
     @Override
     public Npc getNpcById(String id) {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
-            NpcDto npcDto = objectMapper.readValue(new File(getClass().getResource(
+            npcDto = objectMapper.readValue(new File(getClass().getResource(
                             String.format(FILE_PATH, id)
                     )
                     .getFile()), NpcDto.class);
-            return toNpc(npcDto);
+            extractBusinessEntities();
+            return npc;
         } catch (IOException e) {
             e.printStackTrace();
             throw new RuntimeException("Cannot load dialogs");
         }
     }
 
-    private Npc toNpc(NpcDto npcDto) {
-        List<Dialog> allDialogs = npcDto.dialogs().stream()
+    private void extractBusinessEntities() {
+        allDialogs = npcDto.dialogs().stream()
                 .map(dialogDto -> new Dialog(dialogDto.id(), dialogDto.text(), dialogDto.response()))
                 .toList();
-        return new Npc(npcDto.id(),
+        nodes = npcDto.nodes().stream()
+                .map(nodeDto -> new Node(nodeDto.id(),createDialogsFromTheirIds(nodeDto.dialogs())))
+                .toList();
+        setChangeNodeOnDialog();
+        npc = new Npc(npcDto.id(),
                 allDialogs,
-                npcDto.nodes().stream()
-                        .map(node -> new Node(toDialogs(node.dialogs(), allDialogs)))
-                        .toList());
+                nodes);
     }
 
-    private List<Dialog> toDialogs(List<Integer> dialogIds, List<Dialog> dialogs) {
+    private List<Dialog> createDialogsFromTheirIds(List<Integer> dialogIds) {
         return dialogIds.stream()
-                .map(dialogId -> dialogs.stream()
+                .map(dialogId -> allDialogs.stream()
                         .filter(dialog -> dialog.getId() == dialogId)
                         .findAny()
                         .orElseThrow())
                 .toList();
     }
+
+    private void setChangeNodeOnDialog() {
+        npcDto.dialogs().stream()
+                .filter(dialogDto -> dialogDto.changeNode() != 0)
+                .forEach(dialogDto -> findDialogById(dialogDto.id())
+                        .setChangeNode(findNodeById(dialogDto.changeNode())));
+    }
+
+    private Dialog findDialogById(int id) {
+        return allDialogs.stream()
+                .filter(dialog -> dialog.getId() == id)
+                .findAny()
+                .orElseThrow();
+    }
+
+    private Node findNodeById(int id){
+        return nodes.stream()
+                .filter(node -> node.getId() == id)
+                .findAny()
+                .orElseThrow();
+    }
+
 }

@@ -12,6 +12,12 @@ public class ConsoleController {
 
     public void start() {
         System.out.println("Witaj w mojej karczmie! Na co masz ochotę?");
+        while(true){
+            executeDialog();
+        }
+    }
+
+    private void executeDialog() {
         List<String> dialogs = game.getDialogs();
         showOptions(dialogs);
         int answerNr = readAnswer(1,dialogs.size());
