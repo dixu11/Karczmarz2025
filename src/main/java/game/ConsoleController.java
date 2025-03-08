@@ -69,7 +69,7 @@ public class ConsoleController {
 
     private void printStats(Map<ItemType, AtomicInteger> stats){
         System.out.println("Wypite piwa: "+ stats.get(ItemType.BEER));
-        System.out.println("Wypite darmowe piwa: " + 0); //todo implement free beer
+        System.out.println("Wypite darmowe piwa: " + stats.get(ItemType.FREE_BEER));
         System.out.println("Zjedzone schabowe: " + stats.get(ItemType.FOOD));
         System.out.println("Wynajęte pokoje: " + stats.get(ItemType.ROOM));
     }

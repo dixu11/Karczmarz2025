@@ -7,7 +7,6 @@ public class Player {
     private int money = 10;
 
     private Map<ItemType, AtomicInteger> items = new HashMap<>();
-    private List<String> secrets = new ArrayList<>();
 
     public Player() {
         Arrays.stream(ItemType.values())

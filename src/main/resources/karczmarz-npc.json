@@ -96,7 +96,8 @@
       "id": 16,
       "text": "Poproszę darmowe piwo",
       "response": "Dostałeś darmowe piwo",
-      "changeNode": 2
+      "changeNode": 2,
+      "buyItem": "FREE_BEER"
     },
     {
       "id":17 ,

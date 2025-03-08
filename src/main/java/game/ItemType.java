@@ -1,5 +1,5 @@
 package game;
 
 public enum ItemType {
-    BEER,FOOD,ROOM
+    BEER,FREE_BEER,FOOD,ROOM
 }
