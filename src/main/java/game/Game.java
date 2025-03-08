@@ -66,4 +66,12 @@ public class Game {
     public Map<ItemType,AtomicInteger> getStats() {
         return player.getItems();
     }
+
+    public String getNpcName() {
+        return NPC_ID;
+    }
+
+    public String getGreeting() {
+        return npc.getGreeting();
+    }
 }

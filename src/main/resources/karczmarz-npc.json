@@ -1,5 +1,6 @@
 {
   "id": "karczmarz",
+  "greeting": "Witaj w moim sklepie!",
   "dialogs": [
     {
       "id": 1,

@@ -45,6 +45,7 @@ public class NpcJsonRepository implements NpcRepository {
                 .toList();
         setChangeNodeOnDialog();
         npc = new Npc(npcDto.id(),
+                npcDto.greeting(),
                 allDialogs,
                 nodes);
     }

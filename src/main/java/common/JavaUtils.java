@@ -7,18 +7,22 @@ public class JavaUtils {
     public static int readAnswer(int min, int max) {
         try {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Wpisz numer wybranej opcji:");
             int input = scanner.nextInt();
             if (input < min || input > max) {
-                System.out.println("Liczba ze złego przedziału");
+                errorMessage("\t#Nie rozumiem Twojego polecenia. Wybierz jedną z dostępnych opcji.");
                 return readAnswer(min, max);
             }
             return input;
         } catch (InputMismatchException e) {
-            System.out.println("Należy podać cyfrę!");
+            errorMessage("\t#Nie rozumiem Twojego polecenia. Wybierz jedną z dostępnych opcji.");
             return readAnswer(min, max);
         }
     }
+
+    private static void errorMessage(String message) {
+        System.out.println(message);
+    }
+
 
     public static void clear() {
         for (int i = 0; i < 50; ++i)
