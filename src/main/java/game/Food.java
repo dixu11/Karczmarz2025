@@ -15,4 +15,9 @@ public class Food extends Item{
     String specialMessage() {
         return "Dzisiaj schabowe. Smakują wybornie!";
     }
+
+    @Override
+    public ItemType getType() {
+        return ItemType.FOOD;
+    }
 }

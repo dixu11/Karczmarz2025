@@ -1,5 +1,7 @@
 package game;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static common.JavaUtils.clear;
 import static common.JavaUtils.readAnswer;
@@ -14,18 +16,23 @@ public class ConsoleController {
 
     public void start() {
         System.out.println("Witaj w mojej karczmie! Na co masz ochotę?");
-        while(true){
-            executeDialog();
+        boolean running = true;
+        while(running){
+            DialogResult result = executeDialog();
+            running = !result.isGameOver();
         }
+        System.out.println("Koniec gry!");
+        printStats(game.getStats());
     }
 
-    private void executeDialog() {
+    private DialogResult executeDialog() {
         DialogOptions dialogOptions = game.getDialogs();
         showOptions(dialogOptions);
         int answerNr = readAnswer(1,dialogOptions.getDialogs().size());
         clear();
         DialogResult dialogResult = game.selectOption(answerNr - 1);
         printResult(dialogResult);
+        return dialogResult;
     }
 
     private void showOptions(DialogOptions dialogOptions) {
@@ -58,5 +65,12 @@ public class ConsoleController {
             printSystemMessage(systemMessage);
             System.out.println();
         }
+    }
+
+    private void printStats(Map<ItemType, AtomicInteger> stats){
+        System.out.println("Wypite piwa: "+ stats.get(ItemType.BEER));
+        System.out.println("Wypite darmowe piwa: " + 0); //todo implement free beer
+        System.out.println("Zjedzone schabowe: " + stats.get(ItemType.FOOD));
+        System.out.println("Wynajęte pokoje: " + stats.get(ItemType.ROOM));
     }
 }

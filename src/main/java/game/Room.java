@@ -15,4 +15,9 @@ public class Room extends Item{
     String specialMessage() {
         return "Masz sen - Jesteś na statku, widzisz przed sobą wielką osmiornicę. Uciekasz pod pokład?";
     }
+
+    @Override
+    public ItemType getType() {
+        return ItemType.ROOM;
+    }
 }

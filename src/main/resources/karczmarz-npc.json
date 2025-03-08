@@ -47,7 +47,8 @@
     {
       "id": 8,
       "text": "Bywaj!",
-      "response": ""
+      "response": "",
+      "endsGame": true
     },
     {
       "id": 9,
@@ -65,12 +66,14 @@
     {
       "id": 11,
       "text": "Nie",
-      "response": "Ośmiornica Cię zjada."
+      "response": "Ośmiornica Cię zjada.",
+      "endsGame":true
     },
     {
       "id": 12,
       "text": "Tak",
-      "response": "Spadł na Ciebie żyrandol z sufitu."
+      "response": "Spadł na Ciebie żyrandol z sufitu.",
+      "endsGame": true
     },
     {
       "id": 13,

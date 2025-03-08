@@ -9,8 +9,9 @@ public class Dialog {
     private DialogVisibility visibility;
     private int viewedTimes = 0;
     private int selectedTimes = 0;
+    private boolean endsGame;
 
-    public Dialog(int id, String text, String response, ItemType buyItemType, DialogVisibility visibility) {
+    public Dialog(int id, String text, String response, ItemType buyItemType, DialogVisibility visibility, boolean endsGame) {
         this.id = id;
         this.text = text;
         this.response = response;
@@ -21,6 +22,7 @@ public class Dialog {
         if (buyItemType != null) {
             buyItem = new ItemFactory().getItemByType(buyItemType);
         }
+        this.endsGame = endsGame;
     }
 
     public boolean isVisible() {
@@ -69,5 +71,9 @@ public class Dialog {
 
     public Item getBuyItem() {
         return buyItem;
+    }
+
+    public boolean endsGame() {
+        return endsGame;
     }
 }

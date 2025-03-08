@@ -14,4 +14,6 @@ public abstract class Item {
     String cannotAffordMessage() {
         return "Nie stać Cię!";
     }
+
+    public abstract ItemType getType();
 }

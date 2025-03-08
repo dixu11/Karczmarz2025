@@ -2,6 +2,8 @@ package game;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Game {
 
@@ -44,8 +46,11 @@ public class Game {
                 systemMessages.add(item.cannotAffordMessage());
                 return dialogResult;
             }
-            player.pay(item.getCost());
+            player.pay(item.getCost(),item.getType());
             systemMessages.add(item.specialMessage());
+        }
+        if (dialog.endsGame()) {
+            dialogResult.setGameOver(true);
         }
         if (dialog.hasChangeNode()) {
             actualNode = dialog.getChangeNode();
@@ -56,5 +61,9 @@ public class Game {
     private void updateDialogsCounters(List<Dialog> seenDialogs, Dialog selected) {
         selected.selected();
         seenDialogs.forEach(Dialog::seen);
+    }
+
+    public Map<ItemType,AtomicInteger> getStats() {
+        return player.getItems();
     }
 }

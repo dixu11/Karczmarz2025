@@ -8,6 +8,7 @@ public class DialogResult {
     private String npcName;
     private String npcResponse;
     private List<String> systemMessages;
+    private boolean gameOver = false;
 
     public DialogResult(String playerName, String playerDialog, String npcName, String npcResponse, List<String> systemMessages) {
         this.playerName = playerName;
@@ -35,5 +36,13 @@ public class DialogResult {
 
     public List<String> getSystemMessages() {
         return systemMessages;
+    }
+
+    public boolean isGameOver() {
+        return gameOver;
+    }
+
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
     }
 }
