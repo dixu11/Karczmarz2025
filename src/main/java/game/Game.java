@@ -20,20 +20,20 @@ public class Game {
 
     public DialogOptions getDialogs() {
         List<String> systemMessages = new ArrayList<>();
-        List<String> dialogs = actualNode.getDialogs().stream()
+        List<String> dialogs = actualNode.getVisibleDialogs().stream()
                 .map(Dialog::getText)
                 .toList();
         if (actualNode.hasPaidOption()) {
             systemMessages.add("Posiadane monety: " + player.getMoney());
         }
-
         return new DialogOptions(dialogs,systemMessages);
     }
 
 
     public DialogResult selectOption(int answerIndex) { //todo refactor decompose
-        List<Dialog> dialogs = actualNode.getDialogs();
+        List<Dialog> dialogs = actualNode.getVisibleDialogs();
         Dialog dialog = dialogs.get(answerIndex);
+        updateDialogsCounters(dialogs, dialog);
         String response = dialog.getResponse();
         List<String> systemMessages = new ArrayList<>();
         DialogResult dialogResult = new DialogResult("Gracz", dialog.getText(), NPC_ID, response,
@@ -51,5 +51,10 @@ public class Game {
             actualNode = dialog.getChangeNode();
         }
         return dialogResult;
+    }
+
+    private void updateDialogsCounters(List<Dialog> seenDialogs, Dialog selected) {
+        selected.selected();
+        seenDialogs.forEach(Dialog::seen);
     }
 }

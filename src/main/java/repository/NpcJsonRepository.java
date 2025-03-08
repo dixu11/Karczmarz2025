@@ -37,7 +37,7 @@ public class NpcJsonRepository implements NpcRepository {
 
     private void extractBusinessEntities() {
         allDialogs = npcDto.dialogs().stream()
-                .map(dialogDto -> new Dialog(dialogDto.id(), dialogDto.text(), dialogDto.response(),dialogDto.buyItem()))
+                .map(dialogDto -> new Dialog(dialogDto.id(), dialogDto.text(), dialogDto.response(),dialogDto.buyItem(),dialogDto.visibility()))
                 .toList();
         nodes = npcDto.nodes().stream()
                 .map(nodeDto -> new Node(nodeDto.id(),createDialogsFromTheirIds(nodeDto.dialogs())))

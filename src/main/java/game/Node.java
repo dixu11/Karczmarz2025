@@ -11,8 +11,10 @@ public class Node {
         this.dialogs = dialogs;
     }
 
-    public List<Dialog> getDialogs() {
-        return dialogs;
+    public List<Dialog> getVisibleDialogs() {
+        return dialogs.stream()
+                .filter(Dialog::isVisible)
+                .toList();
     }
 
     public int getId() {

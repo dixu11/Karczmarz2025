@@ -4,7 +4,8 @@
     {
       "id": 1,
       "text": "Witaj! Jak się masz?",
-      "response": "A doskonale, interes sie kreci! Czego potrzebujesz?"
+      "response": "A doskonale, interes sie kreci! Czego potrzebujesz?",
+      "visibility": "ONE_CHANCE"
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
       "id": 4,
       "text": "Już od godziny czekam na kelnera!",
       "response": "Panieeee... to nie je żodna restaurancja żeby kelnyrów zatrudniać. Masz jakiś problem?",
-      "changeNode": 6
+      "changeNode": 6,
+      "visibility": "ONE_TIME"
     },
     {
       "id": 5,
